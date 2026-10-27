@@ -194,7 +194,6 @@ def compute_qini_from_rct(
 
 @dataclass
 class QiniResult:
-
     """Convenience container for Qini curve results."""
 
     qini_coefficient: float

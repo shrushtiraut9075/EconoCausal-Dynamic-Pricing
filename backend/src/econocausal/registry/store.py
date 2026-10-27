@@ -71,12 +71,12 @@ class ModelRegistry:
             "n_estimators": data.get("n_estimators", data.get("n_trees", 100)),
             "seed": data.get("seed", 42),
             "metrics": data.get("metrics", {"ate_error": 0.0299, "pehe": 0.0782, "qini": 0.0554}),
-            "nuisance_scores": data.get("nuisance_scores", {"propensity_brier": 0.038, "outcome_r2": 0.412}),
+            "nuisance_scores": data.get(
+                "nuisance_scores", {"propensity_brier": 0.038, "outcome_r2": 0.412}
+            ),
         }
         result.update(data)
         return result
-
-
 
     def save_reference_stats(
         self,

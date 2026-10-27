@@ -36,7 +36,6 @@ def _make_lgbm_regressor(seed: int = 42) -> Any:
     )
 
 
-
 class NaiveEstimator:
     """Naive difference-in-means baseline (confounded — ignores X)."""
 
@@ -64,7 +63,6 @@ class SLearner:
         s = random_state if random_state is not None else seed
         self._model = _make_lgbm_regressor(s)
         self._feature_names: list[str] = []
-
 
     def fit(self, df: pd.DataFrame) -> SLearner:
         X, names = _prepare_features(df)
@@ -164,7 +162,6 @@ class PredictiveTargeting:
         s = random_state if random_state is not None else seed
         self._model = _make_lgbm_regressor(s)
 
-
     def fit(self, df: pd.DataFrame) -> PredictiveTargeting:
         """Fit on T=0 rows only (baseline purchase propensity)."""
         ctrl = df[df[TREATMENT_COL] == 0]
@@ -186,7 +183,6 @@ class RandomTargeting:
     def __init__(self, seed: int = 42, random_state: int | None = None) -> None:
         s = random_state if random_state is not None else seed
         self._rng = np.random.default_rng(s)
-
 
     def fit(self, df: pd.DataFrame) -> RandomTargeting:
         return self
@@ -221,4 +217,3 @@ class OracleEstimator:
 # Aliases
 PredictiveEstimator = PredictiveTargeting
 RandomEstimator = RandomTargeting
-

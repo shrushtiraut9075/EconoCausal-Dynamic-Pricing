@@ -154,7 +154,6 @@ def _make_lgbm_treatment_model(random_state: int) -> Any:
     )
 
 
-
 class DMLModel:
     """Double ML wrapper for EconML CausalForestDML / LinearDML.
 

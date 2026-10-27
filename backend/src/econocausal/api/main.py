@@ -10,10 +10,12 @@ from __future__ import annotations
 import time
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from econocausal import __version__
 from econocausal.api.routes import datasets, intelligence, models, monitor, optimize
@@ -107,10 +109,6 @@ async def api_health() -> dict[str, str]:
 
 
 # ── Frontend SPA Serving (for Unified Single-Service Deployment) ─────────────
-from pathlib import Path
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
-
 frontend_dist = Path(__file__).resolve().parents[4] / "frontend" / "dist"
 if frontend_dist.is_dir() and (frontend_dist / "index.html").is_file():
     if (frontend_dist / "assets").is_dir():

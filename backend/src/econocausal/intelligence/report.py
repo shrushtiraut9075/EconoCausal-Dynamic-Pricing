@@ -230,7 +230,7 @@ def generate_executive_report(request: GenerateReportRequest) -> GenerateReportR
 
 <h2>1. Pricing Strategy A/B Testing Scorecard</h2>
 <p style="font-size: 12px; color: #64748b; margin-top: -6px;">
-  Simulated randomized holdout across 5 candidate strategies (N={ab_res.variants[0].sample_size * len(ab_res.variants):,} users). Statistical power: {ab_res.statistical_power*100:.1f}%, MDE: {ab_res.min_detectable_effect*100:.2f}%.
+  Simulated randomized holdout across 5 candidate strategies (N={ab_res.variants[0].sample_size * len(ab_res.variants):,} users). Statistical power: {ab_res.statistical_power * 100:.1f}%, MDE: {ab_res.min_detectable_effect * 100:.2f}%.
 </p>
 <table>
   <thead>
@@ -255,13 +255,13 @@ def generate_executive_report(request: GenerateReportRequest) -> GenerateReportR
         )
         html += f"""    <tr>
       <td><strong>{v.strategy_name}</strong></td>
-      <td>{v.treatment_rate*100:.1f}%</td>
-      <td>{v.conversion_rate*100:.1f}%</td>
+      <td>{v.treatment_rate * 100:.1f}%</td>
+      <td>{v.conversion_rate * 100:.1f}%</td>
       <td>${v.avg_order_value:.2f}</td>
       <td>${v.total_spend:,.0f}</td>
       <td><strong>${v.net_profit:,.0f}</strong></td>
-      <td style="color: {'#16a34a' if v.profit_lift_pct > 0 else '#64748b'};">
-        {'+' if v.profit_lift_pct > 0 else ''}{v.profit_lift_pct:.1f}%
+      <td style="color: {"#16a34a" if v.profit_lift_pct > 0 else "#64748b"};">
+        {"+" if v.profit_lift_pct > 0 else ""}{v.profit_lift_pct:.1f}%
       </td>
       <td>{sig_badge}</td>
     </tr>\n"""
@@ -318,11 +318,15 @@ def generate_executive_report(request: GenerateReportRequest) -> GenerateReportR
   <tbody>
 """
     for c in comp_res.competitors:
-        v_color = "#dc2626" if c.vulnerability_tier == "critical" else ("#ea580c" if c.vulnerability_tier == "high" else "#16a34a")
+        v_color = (
+            "#dc2626"
+            if c.vulnerability_tier == "critical"
+            else ("#ea580c" if c.vulnerability_tier == "high" else "#16a34a")
+        )
         html += f"""    <tr>
       <td><strong>{c.competitor_name}</strong></td>
       <td>${c.competitor_price:.2f}</td>
-      <td>{'+' if c.price_difference_pct > 0 else ''}{c.price_difference_pct:.1f}%</td>
+      <td>{"+" if c.price_difference_pct > 0 else ""}{c.price_difference_pct:.1f}%</td>
       <td>{c.cross_price_elasticity:.2f}</td>
       <td><strong style="color: {v_color}; text-transform: uppercase;">{c.vulnerability_tier}</strong></td>
       <td style="font-size: 11px; color: #475569;">{c.defensive_pricing_strategy}</td>
@@ -333,7 +337,7 @@ def generate_executive_report(request: GenerateReportRequest) -> GenerateReportR
 
 <h2>4. Fair Pricing & Demographic Bias Audit</h2>
 <p style="font-size: 12px; color: #64748b; margin-top: -6px;">
-  Protected Attribute: {fair_res.protected_attribute} · Reference: {fair_res.privileged_group} · 4/5ths Rule: {'PASSED' if fair_res.four_fifths_rule_passed else 'ACTION REQUIRED'}
+  Protected Attribute: {fair_res.protected_attribute} · Reference: {fair_res.privileged_group} · 4/5ths Rule: {"PASSED" if fair_res.four_fifths_rule_passed else "ACTION REQUIRED"}
 </p>
 <table>
   <thead>
@@ -358,7 +362,7 @@ def generate_executive_report(request: GenerateReportRequest) -> GenerateReportR
         html += f"""    <tr>
       <td><strong>{g.group_name}</strong></td>
       <td>{g.group_share_pct:.1f}%</td>
-      <td>{g.discount_allocation_rate*100:.1f}%</td>
+      <td>{g.discount_allocation_rate * 100:.1f}%</td>
       <td>${g.avg_discount_received:.2f}</td>
       <td>{g.mean_causal_ite:.4f}</td>
       <td><strong>{g.disparate_impact_ratio:.3f}</strong></td>
@@ -391,7 +395,7 @@ def generate_executive_report(request: GenerateReportRequest) -> GenerateReportR
       <td style="text-transform: capitalize;">{d.driver_category}</td>
       <td>${d.impact_amount_usd:,.2f}</td>
       <td>{d.impact_pct_of_drop:.1f}%</td>
-      <td>{d.causal_confidence*100:.0f}%</td>
+      <td>{d.causal_confidence * 100:.0f}%</td>
       <td style="color: #16a34a; font-weight: 700;">+${d.counterfactual_recovery_potential_usd:,.2f}</td>
     </tr>\n"""
 

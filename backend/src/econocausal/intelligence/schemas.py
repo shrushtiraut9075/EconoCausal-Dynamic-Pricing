@@ -132,8 +132,8 @@ class DemographicGroupFairness(BaseModel):
     avg_discount_received: float
     discount_allocation_rate: float  # Prob of receiving any discount > 0
     mean_causal_ite: float
-    disparate_impact_ratio: float    # vs privileged group (4/5ths rule: 0.8 - 1.25)
-    statistical_parity_diff: float   # diff in treatment rate vs privileged
+    disparate_impact_ratio: float  # vs privileged group (4/5ths rule: 0.8 - 1.25)
+    statistical_parity_diff: float  # diff in treatment rate vs privileged
     fairness_status: Literal["PASS", "WARNING", "FAIL"]
 
 
@@ -150,7 +150,9 @@ class FairnessAuditResponse(BaseModel):
 
 class FairnessAuditRequest(BaseModel):
     dataset_id: str | None = None
-    protected_attribute: Literal["age_bracket", "customer_tenure_tier", "loyalty_tier"] = "age_bracket"
+    protected_attribute: Literal["age_bracket", "customer_tenure_tier", "loyalty_tier"] = (
+        "age_bracket"
+    )
     discount_threshold: int = Field(default=0, ge=0, le=20)
 
 

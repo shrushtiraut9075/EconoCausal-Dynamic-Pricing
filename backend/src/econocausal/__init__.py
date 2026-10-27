@@ -14,16 +14,16 @@ import sklearn.preprocessing as _sk_prep
 
 _orig_ohe_init = _sk_prep.OneHotEncoder.__init__
 
+
 @_ft.wraps(_orig_ohe_init)
 def _compat_ohe_init(self: Any, *args: Any, **kwargs: Any) -> Any:
     if "sparse" in kwargs:
         kwargs["sparse_output"] = kwargs.pop("sparse")
     return _orig_ohe_init(self, *args, **kwargs)
 
-_sk_prep.OneHotEncoder.__init__ = _compat_ohe_init  # type: ignore
 
+_sk_prep.OneHotEncoder.__init__ = _compat_ohe_init  # type: ignore
 
 
 __version__ = "1.0.0"
 __author__ = "Infotact Solutions — Data Associate L1"
-

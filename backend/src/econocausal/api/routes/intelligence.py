@@ -79,7 +79,11 @@ async def api_seasonality() -> SeasonalForecastResponse:
 )
 async def api_competitor(request: CompetitorComparisonRequest) -> CompetitorComparisonResponse:
     """Evaluate competitor prices and generate defensive pricing strategies."""
-    logger.info("Evaluating competitor pricing", category=request.category, base_price=request.our_base_price)
+    logger.info(
+        "Evaluating competitor pricing",
+        category=request.category,
+        base_price=request.our_base_price,
+    )
     return evaluate_competitor_pricing(request)
 
 
@@ -103,7 +107,11 @@ async def api_fairness(request: FairnessAuditRequest) -> FairnessAuditResponse:
 )
 async def api_root_cause(request: SalesDropAnalysisRequest) -> SalesDropAnalysisResponse:
     """Diagnose revenue/sales drops into causal drivers and prescriptive recovery steps."""
-    logger.info("Analyzing sales drop root cause", prior=request.prior_period_revenue, current=request.current_period_revenue)
+    logger.info(
+        "Analyzing sales drop root cause",
+        prior=request.prior_period_revenue,
+        current=request.current_period_revenue,
+    )
     return analyze_sales_drop_root_cause(request)
 
 

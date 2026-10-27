@@ -39,7 +39,7 @@ def explain_customer_pricing(request: ExplainabilityRequest) -> ExplainabilityRe
         exp_profit = 32.40
         summary = (
             f"Customer {cid} is classified as a 'Persuadable'. High historical discount affinity "
-            f"({disc_usage*100:.0f}%) and elevated recency ({recency:.0f} days) indicate that a "
+            f"({disc_usage * 100:.0f}%) and elevated recency ({recency:.0f} days) indicate that a "
             "20% discount produces a strong +16.5% causal purchase uplift with positive incremental ROI."
         )
     elif disc_usage < 0.15 and recency < 10:
@@ -80,7 +80,7 @@ def explain_customer_pricing(request: ExplainabilityRequest) -> ExplainabilityRe
             feature_value=round(disc_usage, 2),
             attribution_weight=0.38,
             direction="positive" if disc_usage > 0.3 else "negative",
-            insight=f"Past coupon responsiveness ({disc_usage*100:.0f}%) is the primary driver of high treatment uplift.",
+            insight=f"Past coupon responsiveness ({disc_usage * 100:.0f}%) is the primary driver of high treatment uplift.",
         ),
         FeatureAttribution(
             feature_name="days_since_last_order",

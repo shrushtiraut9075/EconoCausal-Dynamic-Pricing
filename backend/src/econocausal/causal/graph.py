@@ -19,6 +19,7 @@ import pandas as pd
 # Backward compatibility for NetworkX 3.x with DoWhy
 if not hasattr(nx.algorithms, "d_separated"):
     import networkx.algorithms.d_separation as _nx_ds
+
     nx.algorithms.d_separated = _nx_ds.is_d_separator
 
 from econocausal.logging import get_logger

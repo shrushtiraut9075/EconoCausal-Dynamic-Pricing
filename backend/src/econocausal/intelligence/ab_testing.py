@@ -20,8 +20,8 @@ Calculates:
 from __future__ import annotations
 
 import math
-from typing import TypedDict
 import uuid
+from typing import TypedDict
 
 import numpy as np
 from scipy import stats  # type: ignore[import-untyped]
@@ -211,16 +211,64 @@ def run_pricing_ab_test(request: ABTestRequest) -> ABTestResponse:
     segment_names = ["Persuadables", "Sleeping Dogs", "Iron Fence", "Lost Causes"]
     segment_lifts: list[SegmentABLift] = []
     seg_p_adjustments = {
-        "Persuadables": {"control_zero": 0.15, "blanket_10": 0.28, "predictive_targeting": 0.32, "revenue_max": 0.34, "dml_causal_optimal": 0.41},
-        "Sleeping Dogs": {"control_zero": 0.25, "blanket_10": 0.18, "predictive_targeting": 0.24, "revenue_max": 0.16, "dml_causal_optimal": 0.26},
-        "Iron Fence": {"control_zero": 0.35, "blanket_10": 0.36, "predictive_targeting": 0.36, "revenue_max": 0.37, "dml_causal_optimal": 0.36},
-        "Lost Causes": {"control_zero": 0.04, "blanket_10": 0.05, "predictive_targeting": 0.04, "revenue_max": 0.06, "dml_causal_optimal": 0.04},
+        "Persuadables": {
+            "control_zero": 0.15,
+            "blanket_10": 0.28,
+            "predictive_targeting": 0.32,
+            "revenue_max": 0.34,
+            "dml_causal_optimal": 0.41,
+        },
+        "Sleeping Dogs": {
+            "control_zero": 0.25,
+            "blanket_10": 0.18,
+            "predictive_targeting": 0.24,
+            "revenue_max": 0.16,
+            "dml_causal_optimal": 0.26,
+        },
+        "Iron Fence": {
+            "control_zero": 0.35,
+            "blanket_10": 0.36,
+            "predictive_targeting": 0.36,
+            "revenue_max": 0.37,
+            "dml_causal_optimal": 0.36,
+        },
+        "Lost Causes": {
+            "control_zero": 0.04,
+            "blanket_10": 0.05,
+            "predictive_targeting": 0.04,
+            "revenue_max": 0.06,
+            "dml_causal_optimal": 0.04,
+        },
     }
     seg_profit_adjustments = {
-        "Persuadables": {"control_zero": 12.5, "blanket_10": 17.2, "predictive_targeting": 21.0, "revenue_max": 18.5, "dml_causal_optimal": 27.8},
-        "Sleeping Dogs": {"control_zero": 21.0, "blanket_10": 8.5, "predictive_targeting": 19.2, "revenue_max": 4.1, "dml_causal_optimal": 21.8},
-        "Iron Fence": {"control_zero": 29.4, "blanket_10": 20.1, "predictive_targeting": 26.5, "revenue_max": 15.3, "dml_causal_optimal": 29.1},
-        "Lost Causes": {"control_zero": 3.3, "blanket_10": -2.1, "predictive_targeting": 2.9, "revenue_max": -4.8, "dml_causal_optimal": 3.4},
+        "Persuadables": {
+            "control_zero": 12.5,
+            "blanket_10": 17.2,
+            "predictive_targeting": 21.0,
+            "revenue_max": 18.5,
+            "dml_causal_optimal": 27.8,
+        },
+        "Sleeping Dogs": {
+            "control_zero": 21.0,
+            "blanket_10": 8.5,
+            "predictive_targeting": 19.2,
+            "revenue_max": 4.1,
+            "dml_causal_optimal": 21.8,
+        },
+        "Iron Fence": {
+            "control_zero": 29.4,
+            "blanket_10": 20.1,
+            "predictive_targeting": 26.5,
+            "revenue_max": 15.3,
+            "dml_causal_optimal": 29.1,
+        },
+        "Lost Causes": {
+            "control_zero": 3.3,
+            "blanket_10": -2.1,
+            "predictive_targeting": 2.9,
+            "revenue_max": -4.8,
+            "dml_causal_optimal": 3.4,
+        },
     }
 
     for s_name in segment_names:

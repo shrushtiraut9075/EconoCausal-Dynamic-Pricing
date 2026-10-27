@@ -175,7 +175,9 @@ async def get_uplift(model_id: str) -> UpliftResponse:
         curves = [
             QiniCurveData(
                 fractions=fractions,
-                uplift_values=[round(float(np.sin(f * 1.5) * 0.08 * (1 - 0.2 * f)), 4) for f in fractions],
+                uplift_values=[
+                    round(float(np.sin(f * 1.5) * 0.08 * (1 - 0.2 * f)), 4) for f in fractions
+                ],
                 qini_coefficient=0.0554,
                 auuc=0.0682,
                 uplift_at_10=0.0182,
@@ -186,7 +188,9 @@ async def get_uplift(model_id: str) -> UpliftResponse:
             ),
             QiniCurveData(
                 fractions=fractions,
-                uplift_values=[round(float(np.sin(f * 1.4) * 0.062 * (1 - 0.25 * f)), 4) for f in fractions],
+                uplift_values=[
+                    round(float(np.sin(f * 1.4) * 0.062 * (1 - 0.25 * f)), 4) for f in fractions
+                ],
                 qini_coefficient=0.0412,
                 auuc=0.0514,
                 uplift_at_10=0.0135,
@@ -197,7 +201,9 @@ async def get_uplift(model_id: str) -> UpliftResponse:
             ),
             QiniCurveData(
                 fractions=fractions,
-                uplift_values=[round(float(np.sin(f * 1.3) * 0.051 * (1 - 0.3 * f)), 4) for f in fractions],
+                uplift_values=[
+                    round(float(np.sin(f * 1.3) * 0.051 * (1 - 0.3 * f)), 4) for f in fractions
+                ],
                 qini_coefficient=0.0321,
                 auuc=0.0402,
                 uplift_at_10=0.0102,
@@ -219,7 +225,11 @@ async def get_uplift(model_id: str) -> UpliftResponse:
             ),
         ]
         decile_data = [
-            {"decile": i + 1, "targeted_uplift": round(0.045 - i * 0.004, 4), "baseline_uplift": round(0.015, 4)}
+            {
+                "decile": i + 1,
+                "targeted_uplift": round(0.045 - i * 0.004, 4),
+                "baseline_uplift": round(0.015, 4),
+            }
             for i in range(10)
         ]
         targets = {
@@ -263,7 +273,6 @@ async def get_cate_distribution(model_id: str, level: int = 10) -> CATEDistribut
         )
     data = json.loads(dist_path.read_text())
     return CATEDistribution(**data)
-
 
 
 async def _run_training(

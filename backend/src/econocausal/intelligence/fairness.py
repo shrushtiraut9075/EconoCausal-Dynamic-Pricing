@@ -11,9 +11,9 @@ Evaluates:
 
 from __future__ import annotations
 
-import numpy as np
-
 from typing import TypedDict
+
+import numpy as np
 
 from econocausal.intelligence.schemas import (
     DemographicGroupFairness,
@@ -38,25 +38,94 @@ def audit_pricing_fairness(request: FairnessAuditRequest) -> FairnessAuditRespon
 
     if attr == "age_bracket":
         groups_meta = [
-            {"name": "Young Adults (18-25)", "share": 0.22, "treat_rate": 0.48, "avg_disc": 8.5, "ite": 0.125},
-            {"name": "Working Professionals (26-45) [Privileged]", "share": 0.44, "treat_rate": 0.52, "avg_disc": 9.2, "ite": 0.118, "is_priv": True},
-            {"name": "Mature Adults (46-64)", "share": 0.24, "treat_rate": 0.46, "avg_disc": 7.8, "ite": 0.098},
-            {"name": "Seniors (65+)", "share": 0.10, "treat_rate": 0.43, "avg_disc": 6.9, "ite": 0.089},
+            {
+                "name": "Young Adults (18-25)",
+                "share": 0.22,
+                "treat_rate": 0.48,
+                "avg_disc": 8.5,
+                "ite": 0.125,
+            },
+            {
+                "name": "Working Professionals (26-45) [Privileged]",
+                "share": 0.44,
+                "treat_rate": 0.52,
+                "avg_disc": 9.2,
+                "ite": 0.118,
+                "is_priv": True,
+            },
+            {
+                "name": "Mature Adults (46-64)",
+                "share": 0.24,
+                "treat_rate": 0.46,
+                "avg_disc": 7.8,
+                "ite": 0.098,
+            },
+            {
+                "name": "Seniors (65+)",
+                "share": 0.10,
+                "treat_rate": 0.43,
+                "avg_disc": 6.9,
+                "ite": 0.089,
+            },
         ]
         priv_name = "Working Professionals (26-45)"
     elif attr == "loyalty_tier":
         groups_meta = [
-            {"name": "Bronze / New Customers", "share": 0.35, "treat_rate": 0.58, "avg_disc": 11.2, "ite": 0.142},
-            {"name": "Silver Members", "share": 0.30, "treat_rate": 0.49, "avg_disc": 8.5, "ite": 0.112},
-            {"name": "Gold / VIP [Privileged]", "share": 0.25, "treat_rate": 0.51, "avg_disc": 9.0, "ite": 0.095, "is_priv": True},
-            {"name": "Platinum Elite", "share": 0.10, "treat_rate": 0.38, "avg_disc": 6.2, "ite": 0.055},
+            {
+                "name": "Bronze / New Customers",
+                "share": 0.35,
+                "treat_rate": 0.58,
+                "avg_disc": 11.2,
+                "ite": 0.142,
+            },
+            {
+                "name": "Silver Members",
+                "share": 0.30,
+                "treat_rate": 0.49,
+                "avg_disc": 8.5,
+                "ite": 0.112,
+            },
+            {
+                "name": "Gold / VIP [Privileged]",
+                "share": 0.25,
+                "treat_rate": 0.51,
+                "avg_disc": 9.0,
+                "ite": 0.095,
+                "is_priv": True,
+            },
+            {
+                "name": "Platinum Elite",
+                "share": 0.10,
+                "treat_rate": 0.38,
+                "avg_disc": 6.2,
+                "ite": 0.055,
+            },
         ]
         priv_name = "Gold / VIP"
     else:  # customer_tenure_tier
         groups_meta = [
-            {"name": "Tenure < 6 Months", "share": 0.30, "treat_rate": 0.56, "avg_disc": 10.5, "ite": 0.138},
-            {"name": "Tenure 6-24 Months [Privileged]", "share": 0.45, "treat_rate": 0.50, "avg_disc": 8.8, "ite": 0.110, "is_priv": True},
-            {"name": "Tenure > 2 Years", "share": 0.25, "treat_rate": 0.41, "avg_disc": 7.0, "ite": 0.078},
+            {
+                "name": "Tenure < 6 Months",
+                "share": 0.30,
+                "treat_rate": 0.56,
+                "avg_disc": 10.5,
+                "ite": 0.138,
+            },
+            {
+                "name": "Tenure 6-24 Months [Privileged]",
+                "share": 0.45,
+                "treat_rate": 0.50,
+                "avg_disc": 8.8,
+                "ite": 0.110,
+                "is_priv": True,
+            },
+            {
+                "name": "Tenure > 2 Years",
+                "share": 0.25,
+                "treat_rate": 0.41,
+                "avg_disc": 7.0,
+                "ite": 0.078,
+            },
         ]
         priv_name = "Tenure 6-24 Months"
 
@@ -115,7 +184,7 @@ def audit_pricing_fairness(request: FairnessAuditRequest) -> FairnessAuditRespon
 
     findings = [
         f"Protected attribute '{attr}' evaluated across {len(groups_meta)} distinct segments.",
-        f"Privileged reference group: '{priv_name}' with {priv_rate*100:.1f}% discount assignment rate.",
+        f"Privileged reference group: '{priv_name}' with {priv_rate * 100:.1f}% discount assignment rate.",
         f"Minimum Disparate Impact Ratio observed is {min_dir:.3f} (regulatory floor is 0.800).",
         "Disparities in discount assignment are largely aligned with genuine causal treatment heterogeneity (higher ITE in newer/younger segments).",
     ]
