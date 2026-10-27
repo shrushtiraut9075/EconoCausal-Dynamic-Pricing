@@ -7,7 +7,7 @@ interface MetricsCardProps {
   subtitle?: string;
   badge?: {
     text: string;
-    type: 'green' | 'amber' | 'red' | 'indigo';
+    type: 'green' | 'amber' | 'red' | 'indigo' | 'cyan';
   };
   icon?: LucideIcon;
   target?: string;

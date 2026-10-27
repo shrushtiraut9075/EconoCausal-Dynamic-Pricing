@@ -50,7 +50,7 @@ export const App: React.FC = () => {
           maxWidth: '1440px',
           width: '100%',
           margin: '0 auto',
-          padding: '2rem 1.5rem',
+          padding: '2.5rem 2rem',
         }}
       >
         {activeTab === 'overview' && (
@@ -70,8 +70,8 @@ export const App: React.FC = () => {
       <footer
         style={{
           borderTop: '1px solid var(--border-subtle)',
-          background: 'rgba(9, 13, 22, 0.95)',
-          padding: '1.5rem',
+          background: 'rgba(7, 10, 16, 0.96)',
+          padding: '1.5rem 2rem',
           marginTop: 'auto',
         }}
       >
