@@ -1,0 +1,86 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.eggs/
+dist/
+build/
+*.egg-info/
+.env
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# uv
+.uv/
+uv.lock
+
+# Data (must never be committed)
+data/raw/*.csv
+data/raw/*.parquet
+data/processed/*.parquet
+data/external/
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+
+# Model artifacts
+artifacts/models/*/
+artifacts/allocations/*
+!artifacts/models/.gitkeep
+!artifacts/allocations/.gitkeep
+
+# Reports (auto-generated)
+reports/figures/*.png
+reports/coverage/
+reports/evaluation_report.md
+reports/stability.md
+results/
+
+# Secrets and environment
+.env
+!.env.example
+secrets/
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.next/
+frontend/coverage/
+
+# Logs
+*.log
+logs/
+
+# Type checking
+.mypy_cache/
+
+# Docker
+.docker/
