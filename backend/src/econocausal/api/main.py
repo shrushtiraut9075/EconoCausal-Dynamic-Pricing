@@ -92,6 +92,37 @@ app.include_router(optimize.router, prefix="", tags=["Optimisation"])
 app.include_router(monitor.router, prefix="/monitor", tags=["Monitoring"])
 app.include_router(intelligence.router, prefix="/intelligence", tags=["Intelligence"])
 
+# Mount under /api prefix as well for seamless frontend routing
+app.include_router(datasets.router, prefix="/api/datasets", tags=["Datasets"])
+app.include_router(models.router, prefix="/api/models", tags=["Models"])
+app.include_router(optimize.router, prefix="/api", tags=["Optimisation"])
+app.include_router(monitor.router, prefix="/api/monitor", tags=["Monitoring"])
+app.include_router(intelligence.router, prefix="/api/intelligence", tags=["Intelligence"])
+
+
+@app.get("/api/health", tags=["System"], response_model=dict[str, str], include_in_schema=False)
+async def api_health() -> dict[str, str]:
+    """Return API version and status under /api/health."""
+    return {"status": "ok", "version": __version__}
+
+
+# ── Frontend SPA Serving (for Unified Single-Service Deployment) ─────────────
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+frontend_dist = Path(__file__).resolve().parents[4] / "frontend" / "dist"
+if frontend_dist.is_dir() and (frontend_dist / "index.html").is_file():
+    if (frontend_dist / "assets").is_dir():
+        app.mount("/assets", StaticFiles(directory=str(frontend_dist / "assets")), name="assets")
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    async def serve_spa(full_path: str) -> FileResponse:
+        file_path = frontend_dist / full_path
+        if file_path.is_file():
+            return FileResponse(file_path)
+        return FileResponse(frontend_dist / "index.html")
+
 
 # ── Global exception handler ─────────────────────────────────────────────────
 @app.exception_handler(Exception)

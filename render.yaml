@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: econocausal
+    runtime: python
+    plan: free
+    buildCommand: "cd frontend && npm install && npm run build && cd .. && pip install -e ."
+    startCommand: "uvicorn econocausal.api.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ECONOCAUSAL_API_HOST
+        value: 0.0.0.0
