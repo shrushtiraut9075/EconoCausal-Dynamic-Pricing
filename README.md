@@ -2,17 +2,17 @@
 
 <img src="docs/assets/logo.png" alt="EconoCausal Logo" width="180" style="border-radius: 12px; margin-bottom: 16px;" />
 
-# EconoCausal
+# EconoCausal/
 ### Enterprise Causal-AI Dynamic Pricing & Budget Allocation Engine
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111.0-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![React 18](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![React 18](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)/
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![EconML](https://img.shields.io/badge/EconML-0.15.1-FF6F00?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://econml.azurewebsites.net)
-[![DoWhy](https://img.shields.io/badge/DoWhy-0.11.1-4B8BBE?style=for-the-badge&logoColor=white)](https://py-why.github.io/dowhy)
+[![DoWhy](https://img.shields.io/badge/DoWhy-0.11.1-4B8BBE?style=for-the-badge&logoColor=white)](https://py-why.github.io/dowhy)/
 [![SciPy HiGHS](https://img.shields.io/badge/SciPy-HiGHS%20LP%2FMILP-8CAAE6?style=for-the-badge&logo=scipy&logoColor=white)](https://scipy.org)
-[![LightGBM](https://img.shields.io/badge/LightGBM-4.3+-02569B?style=for-the-badge&logoColor=white)](https://lightgbm.readthedocs.io)
+[![LightGBM](https://img.shields.io/badge/LightGBM-4.3+-02569B?style=for-the-badge&logoColor=white)](https://lightgbm.readthedocs.io)/
 [![Code style: Ruff](https://img.shields.io/badge/Code%20Style-Ruff-261230?style=for-the-badge&logo=ruff&logoColor=white)](https://github.com/astral-sh/ruff)
 [![Type Checked: Mypy](https://img.shields.io/badge/Type%20Check-Mypy%20Strict-1674B1?style=for-the-badge&logo=python&logoColor=white)](https://mypy.readthedocs.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
