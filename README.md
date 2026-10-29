@@ -1,4 +1,4 @@
-<div align="center">.
+<div align="center">
 
 <img src="docs/assets/logo.png" alt="EconoCausal Logo" width="180" style="border-radius: 12px; margin-bottom: 16px;" />
 
