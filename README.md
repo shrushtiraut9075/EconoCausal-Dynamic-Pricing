@@ -2,7 +2,7 @@
 
 <img src="docs/assets/logo.png" alt="EconoCausal Logo" width="180" style="border-radius: 12px; margin-bottom: 16px;" />
 
-# EconoCausall
+# EconoCausal
 ### Enterprise Causal-AI Dynamic Pricing & Budget Allocation Engine
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
