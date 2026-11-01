@@ -78,7 +78,7 @@ $$\tau_i(d) = \mathbb{E}[Y_i(d) - Y_i(0) \mid X_i]$$
 
 ---
 
-## 📐 System Architecture/
+## 📐 System Architecture
 
 ```mermaid
 flowchart TD
