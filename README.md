@@ -115,7 +115,7 @@ flowchart TD
 
 ---
 
-## 🔬 Causal Methodology & Theory
+## 🔬 Causal Methodology & Theory...
 
 ### 1. The Confounding Challenge
 In historical e-commerce logs, discount assignment $T$ is heavily confounded by customer attributes $X$ (e.g., lapsed high-value customers receive larger coupons). A naive regression of purchase $Y$ on discount $T$ severely underestimates or overestimates true elasticity.
