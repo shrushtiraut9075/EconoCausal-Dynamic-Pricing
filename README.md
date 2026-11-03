@@ -285,7 +285,7 @@ make clean               # Clean cache, coverage, and temp artifacts
 
 ---
 
-## 📁 Repository Structure......
+## 📁 Repository Structure
 
 ```
 econocausal/
